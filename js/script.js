@@ -17,4 +17,37 @@ function divide(x, y) {
     return x / y;
 }
 
+// variables for storing the operation values
+let operand1;
+let operator;
+let operand2;
+
+// function for managing the operation
+function operate(operand, x, y) {
+    let result;
+
+    switch(operand) {
+        case "+":
+            result = add(x, y);
+            break;
+        case "-":
+            result = subtract(x, y);
+            break;
+        case "x":
+            result = multiply(x, y);
+            break;
+        case "/":
+            if (y === 0) {
+                result = "OOPS!";
+            } else {
+                result = divide(x, y);
+            }
+            break;
+        default:
+            result = "ERROR";
+    }
+
+    return result;
+}
+
 // Testing code
