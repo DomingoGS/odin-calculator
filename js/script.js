@@ -4,6 +4,9 @@ function add(x, y) {
 }
 
 // function for subracting 2 values
+function subtract(x, y) {
+    return x - y;
+}
 
 // function for multiplying 2 values
 
