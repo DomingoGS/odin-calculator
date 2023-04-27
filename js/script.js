@@ -13,6 +13,8 @@ function multiply(x, y) {
     return x * y;
 }
 // function for dividing 2 values
+function divide(x, y) {
+    return x / y;
+}
 
 // Testing code
-console.log();
