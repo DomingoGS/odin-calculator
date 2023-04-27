@@ -9,7 +9,10 @@ function subtract(x, y) {
 }
 
 // function for multiplying 2 values
-
+function multiply(x, y) {
+    return x * y;
+}
 // function for dividing 2 values
 
 // Testing code
+console.log();
