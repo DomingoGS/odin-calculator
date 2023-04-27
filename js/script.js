@@ -23,10 +23,10 @@ let operator;
 let operand2;
 
 // function for managing the operation
-function operate(operand, x, y) {
+function operate(operator, x, y) {
     let result;
 
-    switch(operand) {
+    switch(operator) {
         case "+":
             result = add(x, y);
             break;
@@ -51,3 +51,4 @@ function operate(operand, x, y) {
 }
 
 // Testing code
+
