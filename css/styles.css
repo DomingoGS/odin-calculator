@@ -30,3 +30,15 @@ button.btn-clear {
     background-color: rgb(237, 131, 31);
     color: black;
 }
+
+/* keypad component */
+
+.keypad {
+    display: flex;
+    width: 361px;
+    flex-wrap: wrap-reverse;
+    border: 0px solid red;
+    gap: 7px;
+    padding: 10px;
+    box-sizing: border-box;
+}
