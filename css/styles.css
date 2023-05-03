@@ -1,3 +1,10 @@
+/* body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
 /* key component */
 button  {
     border-radius: 10px;
@@ -39,17 +46,34 @@ button.btn-clear {
 /* screen component */
 
 .screen {
-    border: 2px solid black;
+    border: 10px solid black;
+    border-radius: 17px;
     height: 75px;
     padding: 5px;
-    width: 340px;
+    width: 330px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin: 5px 0;
+    background-color: lightyellow;
 }
 
 .display {
     /* font-family: 'digital7'; */
-    font-size: 80px;
+    font-size: 77px;
     margin: 0;
+}
+
+/* calculator component */
+
+.calculator {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 361px;
+    background-color: rgb(105, 132, 149);
 }
