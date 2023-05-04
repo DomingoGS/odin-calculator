@@ -88,9 +88,13 @@ function processKey(key) {
                     if (operand1 === "0" || operand1 === "ERROR") {
                         operand1 = "";
                     }
-                    operand1 += key.value;
+                    if (digitsAvailable(operand1) > 0) {
+                        operand1 += key.value;
+                    }
                 } else  {
-                    operand2 += key.value;
+                    if (digitsAvailable(operand2) > 0) {
+                        operand2 += key.value;
+                    }
                 }
                 break;
             case ".":
@@ -148,8 +152,14 @@ function processKey(key) {
     updateDisplay(newDisplayValue);
 }
 
+// funtion for checking how many digits an operand has left before reaching the maximum length of 8 digits.
+function digitsAvailable(numberString) {
+    const maxDigits = 8;
+    numberString = numberString.replace(/[.-]/g, "");
+    return maxDigits - numberString.length;
+}
+
 // TO DO:
-//   1. Limit operators to max. 8 digits
-//   2. Round decimals in floating point numbers to fit result in display (max. 8 digits)
+//   1. Round decimals in floating point numbers to fit result in display (max. 8 digits)
 
 // Testing code
