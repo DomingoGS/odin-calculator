@@ -94,7 +94,24 @@ function processKey(key) {
                 }
                 break;
             case ".":
-                console.log(key.value);
+                // console.log(key.value);
+                if (!operator) {
+                    if (!operand1) {
+                        operand1 = "0.";
+                    } else {
+                        if (!operand1.includes(".")) {
+                            operand1 += ".";
+                        }
+                    }
+                } else {
+                    if (!operand2) {
+                        operand2 = "0.";
+                    } else {
+                        if (!operand2.includes(".")) {
+                            operand2 += ".";
+                        }
+                    }
+                }
                 break;
         }
     } else if (key.className === "btn-operator") {
@@ -130,5 +147,9 @@ function processKey(key) {
     const newDisplayValue = operand2 ? operand2 : operand1;
     updateDisplay(newDisplayValue);
 }
+
+// TO DO:
+//   1. Implement decimal functionality when decimal key pressed
+//   2. Limit numbers to max. 8 digits and round decimals whem needed for floating point numbers
 
 // Testing code
