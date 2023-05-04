@@ -18,9 +18,9 @@ function divide(x, y) {
 }
 
 // variables for storing the operation values
-let operand1;
-let operator;
-let operand2;
+let operand1 = "";
+let operator = "";
+let operand2 = "";
 
 // function for managing the operation
 function operate(operator, x, y) {
@@ -69,12 +69,68 @@ function updateDisplay(value) {
 const keys = document.querySelectorAll("button");
 keys.forEach(element => {
     element.addEventListener("click", (ev) => {
-        ev.target;
+        processKey(ev.target);
     });
 });
 
 // function for processing the value of the pressed key
+function processKey(key) {
+    if (key.className === "btn-digit") {
+        switch (key.value) {
+            case "0":
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "8":
+            case "9":
+                if (!operator) {
+                    if (operand1 === "0" || operand1 === "ERROR") {
+                        operand1 = "";
+                    }
+                    operand1 += key.value;
+                } else {
+                    operand2 += key.value;
+                }
+                break;
+            case ".":
+                console.log(key.value);
+                break;
+        }
+    } else if (key.className === "btn-operator") {
+        switch (key.value) {
+            case "+":
+            case "-":    
+            case "x":
+            case "/":
+                if (operand1) {
+                    if (!operand2) {
+                        operator = key.value;
+                    } else {
+                        operand1 = operate(operator, operand1, operand2);
+                        operator = key.value;
+                        operand2 = "";
+                        // TODO: fix adding function concatenating values as strings
+                    }
+                }
+                break;
+            case "=":
+                if (operand2) {
+                    operand1 = operate(operator, operand1, operand2);
+                    operator = "";
+                    operand2 = "";
+                }
+                break;
+        }
+    } else if (key.className === "btn-clear") {
 
+    }
+
+    console.log("op1: ", operand1, ", operator: ", operator, ", op2: ", operand2);
+}
 
 // Testing code
 // function log(key) {
