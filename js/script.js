@@ -65,4 +65,12 @@ function updateDisplay(value) {
     display.textContent = displayValue;
 }
 
+// Add event listener to each key for providing corresponding value
+const keys = document.querySelectorAll("button");
+keys.forEach(element => {
+    element.addEventListener("click", (ev) => {
+        ev.target.value;
+    });
+});
+
 // Testing code
