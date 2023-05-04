@@ -25,6 +25,8 @@ let operand2 = "";
 // function for managing the operation
 function operate(operator, x, y) {
     let result;
+    x = Number(x);
+    y = Number(y);
 
     switch(operator) {
         case "+":
@@ -108,7 +110,6 @@ function processKey(key) {
                         operand1 = operate(operator, operand1, operand2);
                         operator = key.value;
                         operand2 = "";
-                        // TODO: fix adding function concatenating values as strings
                     }
                 }
                 break;
