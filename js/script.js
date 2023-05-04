@@ -149,6 +149,7 @@ function processKey(key) {
 }
 
 // TO DO:
-//   1. Limit numbers to max. 8 digits and round decimals whem needed for floating point numbers
+//   1. Limit operators to max. 8 digits
+//   2. Round decimals in floating point numbers to fit result in display (max. 8 digits)
 
 // Testing code
