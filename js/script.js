@@ -121,7 +121,9 @@ function processKey(key) {
                 break;
         }
     } else if (key.className === "btn-clear") {
-
+        operand1 = "0";
+        operator = "";
+        operand2 = "";
     }
 
     const newDisplayValue = operand2 ? operand2 : operand1;
