@@ -51,15 +51,18 @@ function operate(operator, x, y) {
 }
 
 // function for populating the display
-let displayValue = "";
+let displayValue = "0";
+let display = document.getElementsByClassName("display")[0];
+display.textContent = displayValue;
 
 function updateDisplay(value) {
-    if (!displayValue) {
+    if (displayValue === "0") {
         displayValue = value;
     } else {
         displayValue += value;
     }
+
+    display.textContent = displayValue;
 }
 
 // Testing code
-
