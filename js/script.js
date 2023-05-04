@@ -89,7 +89,7 @@ function processKey(key) {
                         operand1 = "";
                     }
                     operand1 += key.value;
-                } else {
+                } else  {
                     operand2 += key.value;
                 }
                 break;
@@ -149,7 +149,6 @@ function processKey(key) {
 }
 
 // TO DO:
-//   1. Implement decimal functionality when decimal key pressed
-//   2. Limit numbers to max. 8 digits and round decimals whem needed for floating point numbers
+//   1. Limit numbers to max. 8 digits and round decimals whem needed for floating point numbers
 
 // Testing code
