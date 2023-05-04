@@ -69,8 +69,14 @@ function updateDisplay(value) {
 const keys = document.querySelectorAll("button");
 keys.forEach(element => {
     element.addEventListener("click", (ev) => {
-        ev.target.value;
+        ev.target;
     });
 });
 
+// function for processing the value of the pressed key
+
+
 // Testing code
+// function log(key) {
+//     console.log(key.value);
+// }
