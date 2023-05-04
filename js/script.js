@@ -56,12 +56,13 @@ let display = document.getElementsByClassName("display")[0];
 display.textContent = displayValue;
 
 function updateDisplay(value) {
-    if (displayValue === "0") {
-        displayValue = value;
-    } else {
-        displayValue += value;
-    }
+    // if (displayValue === "0") {
+    //     displayValue = value;
+    // } else {
+    //     displayValue += value;
+    // }
 
+    displayValue = value;
     display.textContent = displayValue;
 }
 
@@ -129,7 +130,9 @@ function processKey(key) {
 
     }
 
-    console.log("op1: ", operand1, ", operator: ", operator, ", op2: ", operand2);
+    //console.log("op1: ", operand1, ", operator: ", operator, ", op2: ", operand2);
+    const newDisplayValue = operand2 ? operand2 : operand1;
+    updateDisplay(newDisplayValue);
 }
 
 // Testing code
