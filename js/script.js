@@ -50,5 +50,16 @@ function operate(operator, x, y) {
     return result;
 }
 
+// function for populating the display
+let displayValue = "";
+
+function updateDisplay(value) {
+    if (!displayValue) {
+        displayValue = value;
+    } else {
+        displayValue += value;
+    }
+}
+
 // Testing code
 
