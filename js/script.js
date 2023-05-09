@@ -125,6 +125,9 @@ function processKey(key) {
             case "/":
                 if (operand1) {
                     if (!operand2) {
+                        if(operand1.endsWith(".")) {
+                            operand1 = operand1.substring(0, operand1.length - 1);
+                        }
                         operator = key.value;
                     } else {
                         operand1 = operate(operator, operand1, operand2).toString();
@@ -181,6 +184,6 @@ function fitInDisplay(value) {
 }
 
 // TO DO:
-//   1. Make decimal point disappear if operator is pressed when no other digits have been typed after the decimal point.
+
 
 // Testing code
