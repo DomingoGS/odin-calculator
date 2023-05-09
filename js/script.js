@@ -49,11 +49,11 @@ function operate(operator, x, y) {
             result = "ERROR";
     }
 
-    /* if (digitsAvailable(result.toString()) < 0) {
-        result = result.toExponential(8);
+    /* if (digitsAvailable(result) < 0) {
+        result = fitInDisplay(result);
     } */
 
-    return result.toString();
+    return result;
 }
 
 // function for populating the display
@@ -131,7 +131,7 @@ function processKey(key) {
                     if (!operand2) {
                         operator = key.value;
                     } else {
-                        operand1 = operate(operator, operand1, operand2);
+                        operand1 = operate(operator, operand1, operand2).toString();
                         operator = key.value;
                         operand2 = "";
                     }
@@ -139,7 +139,7 @@ function processKey(key) {
                 break;
             case "=":
                 if (operand2) {
-                    operand1 = operate(operator, operand1, operand2);
+                    operand1 = operate(operator, operand1, operand2).toString();
                     operator = "";
                     operand2 = "";
                 }
@@ -157,9 +157,13 @@ function processKey(key) {
 
 // funtion for checking how many digits an operand has left before reaching the maximum length of 8 digits.
 const MAX_DIGITS = 8;
-function digitsAvailable(numberString) {
-    numberString = numberString.replace(/[.-]/g, "");
-    return MAX_DIGITS - numberString.length;
+function digitsAvailable(number) {
+    return MAX_DIGITS - number.toString().replace(/[.-]/g, "").length;
+}
+
+// function for adapting a big result for fitting in the calculator display
+function fitInDisplay(value) {
+
 }
 
 // TO DO:
