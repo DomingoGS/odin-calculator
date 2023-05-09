@@ -49,6 +49,10 @@ function operate(operator, x, y) {
             result = "ERROR";
     }
 
+    /* if (digitsAvailable(result.toString()) < 0) {
+        result = result.toExponential(8);
+    } */
+
     return result.toString();
 }
 
