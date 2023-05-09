@@ -49,7 +49,7 @@ function operate(operator, x, y) {
             result = "ERROR";
     }
 
-    return result;
+    return result.toString();
 }
 
 // function for populating the display
