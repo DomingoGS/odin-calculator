@@ -98,7 +98,6 @@ function processKey(key) {
                 }
                 break;
             case ".":
-                // console.log(key.value);
                 if (!operator) {
                     if (!operand1) {
                         operand1 = "0.";
@@ -153,10 +152,10 @@ function processKey(key) {
 }
 
 // funtion for checking how many digits an operand has left before reaching the maximum length of 8 digits.
+const MAX_DIGITS = 8;
 function digitsAvailable(numberString) {
-    const maxDigits = 8;
     numberString = numberString.replace(/[.-]/g, "");
-    return maxDigits - numberString.length;
+    return MAX_DIGITS - numberString.length;
 }
 
 // TO DO:
