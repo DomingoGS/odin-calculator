@@ -159,6 +159,8 @@ function digitsAvailable(numberString) {
 }
 
 // TO DO:
-//   1. Round decimals in floating point numbers to fit result in display (max. 8 digits)
+//   1. Convert integer results bigger than 8 digits to 8 digit representation
+//   2. Fix precision for results with decimals
+//   3. Round results with decimal numbers to fit in display (max. 8 digits)
 
 // Testing code
