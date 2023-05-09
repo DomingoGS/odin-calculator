@@ -102,7 +102,7 @@ function processKey(key) {
                     if (!operand1) {
                         operand1 = "0.";
                     } else {
-                        if (!operand1.includes(".")) {
+                        if (!operand1.includes(".") && digitsAvailable(operand1) > 0) {
                             operand1 += ".";
                         }
                     }
@@ -110,7 +110,7 @@ function processKey(key) {
                     if (!operand2) {
                         operand2 = "0.";
                     } else {
-                        if (!operand2.includes(".")) {
+                        if (!operand2.includes(".")  && digitsAvailable(operand2) > 0) {
                             operand2 += ".";
                         }
                     }
@@ -181,7 +181,6 @@ function fitInDisplay(value) {
 }
 
 // TO DO:
-//   1. Fix still being able to type decimal when display is at max (8 digits)
-//   2. Make decimal point disappear if operator is pressed when no other digits have been typed after the decimal point.
+//   1. Make decimal point disappear if operator is pressed when no other digits have been typed after the decimal point.
 
 // Testing code
