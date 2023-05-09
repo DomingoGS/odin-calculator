@@ -49,10 +49,6 @@ function operate(operator, x, y) {
             result = "ERROR";
     }
 
-    /* if (digitsAvailable(result) < 0) {
-        result = fitInDisplay(result);
-    } */
-
     return result;
 }
 
@@ -151,7 +147,12 @@ function processKey(key) {
         operand2 = "";
     }
 
-    const newDisplayValue = operand2 ? operand2 : operand1;
+    let newDisplayValue = operand2 ? operand2 : operand1;
+
+    if (digitsAvailable(newDisplayValue) < 0) {
+        newDisplayValue = fitInDisplay(newDisplayValue);
+    }
+
     updateDisplay(newDisplayValue);
 }
 
@@ -163,12 +164,23 @@ function digitsAvailable(number) {
 
 // function for adapting a big result for fitting in the calculator display
 function fitInDisplay(value) {
+    if (value % 1 != 0) {
+        const integer = value.split(".", 1)[0];
+        let freeDigits = digitsAvailable(integer);
+        freeDigits = freeDigits < 0 ? freeDigits : 8;
+        value = Number.parseFloat(value).toFixed(freeDigits) * 1;
+    } else {
+        value = Number.parseInt(value).toExponential();
+    }
 
+    if (digitsAvailable(value) < 0) {
+        value = "TOO BIG";
+    }
+    
+    return value;
 }
 
 // TO DO:
-//   1. Convert integer results bigger than 8 digits to 8 digit representation
-//   2. Fix precision for results with decimals
-//   3. Round results with decimal numbers to fit in display (max. 8 digits)
+//   1. Fix still being able to type decimal when display is at max (8 digits)
 
 // Testing code
