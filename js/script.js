@@ -182,5 +182,6 @@ function fitInDisplay(value) {
 
 // TO DO:
 //   1. Fix still being able to type decimal when display is at max (8 digits)
+//   2. Make decimal point disappear if operator is pressed when no other digits have been typed after the decimal point.
 
 // Testing code
