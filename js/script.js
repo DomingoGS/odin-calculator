@@ -170,7 +170,7 @@ function fitInDisplay(value) {
     if (value % 1 != 0) {
         const integer = value.split(".", 1)[0];
         let freeDigits = digitsAvailable(integer);
-        freeDigits = freeDigits < 0 ? freeDigits : 8;
+        freeDigits = freeDigits < 0 ? 8 : freeDigits;
         value = Number.parseFloat(value).toFixed(freeDigits) * 1;
     } else {
         value = Number.parseInt(value).toExponential();
