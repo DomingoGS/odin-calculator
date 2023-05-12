@@ -184,6 +184,9 @@ function fitInDisplay(value) {
 }
 
 // TO DO:
-
+//  1. Add backspace button to undo last pressed digit
+//  2. Add keyboard support
+//  3. Make it look nicer
+//  4. Refactor and improve code
 
 // Testing code
