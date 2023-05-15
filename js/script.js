@@ -151,6 +151,16 @@ function processKey(key) {
                 operator = "";
                 operand2 = "";
                 break;
+            case "backspace":
+                if (operand1) {
+                    if(operand2) {
+                        operand2 = operand2.slice(0, -1);
+                    } else {
+                        if(!operator) {
+                            operand1 = operand1.slice(0, -1);
+                        }
+                    }
+                }
         }
     }
 
@@ -158,6 +168,10 @@ function processKey(key) {
 
     if (digitsAvailable(newDisplayValue) < 0) {
         newDisplayValue = fitInDisplay(newDisplayValue);
+    }
+    
+    if (newDisplayValue === "") {
+        newDisplayValue = 0;
     }
 
     updateDisplay(newDisplayValue);
@@ -188,9 +202,8 @@ function fitInDisplay(value) {
 }
 
 // TO DO:
-//  1. Add backspace button to undo last pressed digit
-//  2. Add keyboard support
-//  3. Make it look nicer
-//  4. Refactor and improve code
+//  1. Add keyboard support
+//  2. Make it look nicer
+//  3. Refactor and improve code
 
 // Testing code
