@@ -144,10 +144,14 @@ function processKey(key) {
                 }
                 break;
         }
-    } else if (key.className === "btn-clear") {
-        operand1 = "0";
-        operator = "";
-        operand2 = "";
+    } else if (key.className === "btn-delete") {
+        switch(key.value) {
+            case "clear":
+                operand1 = "0";
+                operator = "";
+                operand2 = "";
+                break;
+        }
     }
 
     let newDisplayValue = operand2 ? operand2 : operand1;
