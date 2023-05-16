@@ -72,96 +72,89 @@ keys.forEach(element => {
 
 // function for processing the value of the pressed key
 function processKey(key) {
-    if (key.className === "btn-digit") {
-        switch (key.value) {
-            case "0":
-            case "1":
-            case "2":
-            case "3":
-            case "4":
-            case "5":
-            case "6":
-            case "7":
-            case "8":
-            case "9":
-                if (!operator) {
-                    if (operand1 === "0" || operand1 === "ERROR") {
-                        operand1 = "";
-                    }
-                    if (digitsAvailable(operand1) > 0) {
-                        operand1 += key.value;
-                    }
-                } else  {
-                    if (digitsAvailable(operand2) > 0) {
-                        operand2 += key.value;
-                    }
+    switch (key.value) {
+        case "0":
+        case "1":
+        case "2":
+        case "3":
+        case "4":
+        case "5":
+        case "6":
+        case "7":
+        case "8":
+        case "9":
+            if (!operator) {
+                if (operand1 === "0" || operand1 === "ERROR") {
+                    operand1 = "";
                 }
-                break;
-            case ".":
-                if (!operator) {
-                    if (!operand1) {
-                        operand1 = "0.";
-                    } else {
-                        if (!operand1.includes(".") && digitsAvailable(operand1) > 0) {
-                            operand1 += ".";
-                        }
-                    }
+                if (digitsAvailable(operand1) > 0) {
+                    operand1 += key.value;
+                }
+            } else  {
+                if (digitsAvailable(operand2) > 0) {
+                    operand2 += key.value;
+                }
+            }
+            break;
+        case ".":
+            if (!operator) {
+                if (!operand1) {
+                    operand1 = "0.";
                 } else {
-                    if (!operand2) {
-                        operand2 = "0.";
-                    } else {
-                        if (!operand2.includes(".")  && digitsAvailable(operand2) > 0) {
-                            operand2 += ".";
-                        }
+                    if (!operand1.includes(".") && digitsAvailable(operand1) > 0) {
+                        operand1 += ".";
                     }
                 }
-                break;
-        }
-    } else if (key.className === "btn-operator") {
-        switch (key.value) {
-            case "+":
-            case "-":    
-            case "x":
-            case "/":
-                if (operand1) {
-                    if (!operand2) {
-                        if(operand1.endsWith(".")) {
-                            operand1 = operand1.substring(0, operand1.length - 1);
-                        }
-                        operator = key.value;
-                    } else {
-                        operand1 = operate(operator, operand1, operand2).toString();
-                        operator = key.value;
-                        operand2 = "";
+            } else {
+                if (!operand2) {
+                    operand2 = "0.";
+                } else {
+                    if (!operand2.includes(".")  && digitsAvailable(operand2) > 0) {
+                        operand2 += ".";
                     }
                 }
-                break;
-            case "=":
-                if (operand2) {
+            }
+            break;
+        case "+":
+        case "-":    
+        case "x":
+        case "/":
+            if (operand1) {
+                if (!operand2) {
+                    if(operand1.endsWith(".")) {
+                        operand1 = operand1.substring(0, operand1.length - 1);
+                    }
+                    operator = key.value;
+                } else {
                     operand1 = operate(operator, operand1, operand2).toString();
-                    operator = "";
+                    operator = key.value;
                     operand2 = "";
                 }
-                break;
-        }
-    } else if (key.className === "btn-delete") {
-        switch(key.value) {
-            case "clear":
-                operand1 = "0";
+            }
+            break;
+        case "=":
+            if (operand2) {
+                operand1 = operate(operator, operand1, operand2).toString();
                 operator = "";
                 operand2 = "";
-                break;
-            case "backspace":
-                if (operand1) {
-                    if(operand2) {
-                        operand2 = operand2.slice(0, -1);
-                    } else {
-                        if(!operator) {
-                            operand1 = operand1.slice(0, -1);
-                        }
+            }
+            break;
+        case "clear":
+            operand1 = "0";
+            operator = "";
+            operand2 = "";
+            break;
+        case "backspace":
+            if (operand1) {
+                if(operand2) {
+                    operand2 = operand2.slice(0, -1);
+                } else {
+                    if(!operator) {
+                        operand1 = operand1.slice(0, -1);
                     }
                 }
-        }
+            }
+            break;
     }
 
     let newDisplayValue = operand2 ? operand2 : operand1;
