@@ -197,6 +197,7 @@ function fitInDisplay(value) {
 // add keyboard support
 
 document.addEventListener("keydown", (ev) => {
+    ev.preventDefault();
     try {
         document.getElementById(ev.key).click();
     } catch (error) {
