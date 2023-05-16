@@ -35,7 +35,7 @@ function operate(operator, x, y) {
         case "-":
             result = subtract(x, y);
             break;
-        case "x":
+        case "*":
             result = multiply(x, y);
             break;
         case "/":
@@ -117,7 +117,7 @@ function processKey(key) {
             break;
         case "+":
         case "-":    
-        case "x":
+        case "*":
         case "/":
             if (operand1) {
                 if (!operand2) {
@@ -194,8 +194,18 @@ function fitInDisplay(value) {
     return value;
 }
 
+// add keyboard support
+
+document.addEventListener("keydown", (ev) => {
+    try {
+        document.getElementById(ev.key).click();
+    } catch (error) {
+        console.warn("Not a key on the calculator.");
+    }
+});
+
 // TO DO:
-//  1. Add keyboard support
+//  1. Add button animation om calculator when corresponding keyboard key is pressed
 //  2. Make it look nicer
 //  3. Refactor and improve code
 
