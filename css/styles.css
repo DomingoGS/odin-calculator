@@ -8,6 +8,7 @@ body {
 /* key component */
 button  {
     border-radius: 10px;
+    border-width: 3px;
     color: rgb(24, 27, 44);
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 65px;
@@ -29,6 +30,11 @@ button.btn-operator {
 
 button.btn-delete {
     background-color: rgb(239, 103, 103);
+}
+
+button.active {
+    color: rgb(0, 229, 255);
+    border-style: inset;
 }
 
 /* keypad component */

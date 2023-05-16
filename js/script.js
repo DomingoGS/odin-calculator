@@ -199,15 +199,23 @@ function fitInDisplay(value) {
 document.addEventListener("keydown", (ev) => {
     ev.preventDefault();
     try {
-        document.getElementById(ev.key).click();
+        const button = document.getElementById(ev.key);
+        button.click();
+        button.classList.add("active");
     } catch (error) {
         console.warn("Not a key on the calculator.");
     }
 });
 
+document.addEventListener("keyup", (ev) => {
+    ev.preventDefault();
+    try {
+        const button = document.getElementById(ev.key);
+        button.classList.remove("active");
+    } catch (ev) {}
+});
+
 // TO DO:
-//  1. Add button animation om calculator when corresponding keyboard key is pressed
-//  2. Make it look nicer
-//  3. Refactor and improve code
+//  1. Refactor and improve code
 
 // Testing code
