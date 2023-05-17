@@ -179,7 +179,7 @@ function processKey(key) {
 // funtion for checking how many digits an operand has left before reaching the maximum length of 8 digits.
 const MAX_DIGITS = 8;
 function digitsAvailable(number) {
-    return MAX_DIGITS - number.toString().replace(/[.-]/g, "").length;
+    return MAX_DIGITS - number.toString().replace(/[.]/g, "").length;
 }
 
 // function for adapting a big result for fitting in the calculator display
