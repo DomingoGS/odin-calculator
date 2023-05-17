@@ -222,6 +222,8 @@ document.addEventListener("keyup", (ev) => {
 });
 
 // TO DO:
+//  1. Fix "-" sign for negative decimal values with 8 digits being displayed outside of the display's left boundary
+//  2. Add result variable to fix the displayed result of an operation being subject to modification with the keypad
 //  1. Refactor and improve code
 
 // Testing code
