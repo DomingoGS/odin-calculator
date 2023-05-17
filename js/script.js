@@ -1,20 +1,28 @@
 // function for adding 2 values
 function add(x, y) {
-    return x + y;
+    x = new Decimal(x);
+    y = new Decimal(y);
+    return x.plus(y);
 }
 
 // function for subracting 2 values
 function subtract(x, y) {
-    return x - y;
+    x = new Decimal(x);
+    y = new Decimal(y);
+    return x.minus(y);
 }
 
 // function for multiplying 2 values
 function multiply(x, y) {
-    return x * y;
+    x = new Decimal(x);
+    y = new Decimal(y);
+    return x.times(y);
 }
 // function for dividing 2 values
 function divide(x, y) {
-    return x / y;
+    x = new Decimal(x);
+    y = new Decimal(y);
+    return x.dividedBy(y);
 }
 
 // variables for storing the operation values
@@ -25,8 +33,8 @@ let operand2 = "";
 // function for managing the operation
 function operate(operator, x, y) {
     let result;
-    x = Number(x);
-    y = Number(y);
+    //x = Number(x);
+    //y = Number(y);
 
     switch(operator) {
         case "+":
