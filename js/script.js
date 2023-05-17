@@ -33,8 +33,6 @@ let operand2 = "";
 // function for managing the operation
 function operate(operator, x, y) {
     let result;
-    //x = Number(x);
-    //y = Number(y);
 
     switch(operator) {
         case "+":
