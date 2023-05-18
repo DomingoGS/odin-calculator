@@ -55,7 +55,7 @@ function operate(operator, x, y) {
             result = "ERROR";
     }
 
-    return result;
+    return result.toString();
 }
 
 // function for populating the display
@@ -132,7 +132,7 @@ function processKey(key) {
                     }
                     operator = key.value;
                 } else {
-                    operand1 = operate(operator, operand1, operand2).toString();
+                    operand1 = operate(operator, operand1, operand2);
                     operator = key.value;
                     operand2 = "";
                 }
@@ -140,7 +140,7 @@ function processKey(key) {
             break;
         case "=":
             if (operand2) {
-                operand1 = operate(operator, operand1, operand2).toString();
+                operand1 = operate(operator, operand1, operand2);
                 operator = "";
                 operand2 = "";
             }
