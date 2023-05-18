@@ -46,7 +46,7 @@ function operate(operator, x, y) {
             result = multiply(x, y);
             break;
         case "/":
-            if (y === 0) {
+            if (y === "0") {
                 result = "OOPS!";
             } else {
                 result = divide(x, y);
@@ -55,16 +55,19 @@ function operate(operator, x, y) {
         default:
             result = "ERROR";
     }
-
+    
     return result.toString();
 }
 
 // function for populating the display
-let displayValue = "0";
+//let displayValue = "0";
 let display = document.getElementsByClassName("display")[0];
-display.textContent = displayValue;
+updateDisplay();
 
 function updateDisplay(value) {
+    if (!value) {
+        value = "0";
+    }
     display.textContent = value;
 }
 
@@ -78,6 +81,8 @@ keys.forEach(element => {
 
 // function for processing the value of the pressed key
 function processKey(key) {
+    const hasError = display.textContent === "ERROR" || display.textContent === "TOO BIG" || display.textContent === "OOPS!"; // result === "ERROR" || result === "TOO BIG" || result === "OOPS!";
+
     switch (key.value) {
         case "0":
         case "1":
@@ -89,9 +94,9 @@ function processKey(key) {
         case "7":
         case "8":
         case "9":
-            if (!result) {
+            if (!result && !hasError) {
                 if (!operator) {
-                    if (operand1 === "0" || operand1 === "ERROR") {
+                    if (operand1 === "0") {
                         operand1 = "";
                     }
                     if (digitsAvailable(operand1) > 0) {
@@ -105,7 +110,7 @@ function processKey(key) {
             }
             break;
         case ".":
-            if (!result) {
+            if (!result && !hasError) {
                 if (!operator) {
                     if (!operand1) {
                         operand1 = "0.";
@@ -129,25 +134,27 @@ function processKey(key) {
         case "-":    
         case "*":
         case "/":
-            if (result) {
-                operand1 = result;
-                result = "";
-            }
-            if (operand1) {
-                if (!operand2) {
-                    if(operand1.endsWith(".")) {
-                        operand1 = operand1.substring(0, operand1.length - 1);
+            if (!hasError) {
+                if (result) {
+                    operand1 = result;
+                    result = "";
+                }
+                if (operand1) {
+                    if (!operand2) {
+                        if(operand1.endsWith(".")) {
+                            operand1 = operand1.substring(0, operand1.length - 1);
+                        }
+                        operator = key.value;
+                    } else {
+                        operand1 = operate(operator, operand1, operand2);
+                        operator = key.value;
+                        operand2 = "";
                     }
-                    operator = key.value;
-                } else {
-                    operand1 = operate(operator, operand1, operand2);
-                    operator = key.value;
-                    operand2 = "";
                 }
             }
             break;
         case "=":
-            if (operand2) {
+            if (operand2 && !hasError) {
                 result = operate(operator, operand1, operand2);
                 operand1 = "";
                 operator = "";
@@ -161,7 +168,7 @@ function processKey(key) {
             result = "";
             break;
         case "backspace":
-            if (!result) {
+            if (!result && !hasError) {
                 if (operand1) {
                     if(operand2) {
                         operand2 = operand2.slice(0, -1);
@@ -180,10 +187,6 @@ function processKey(key) {
 
     if (digitsAvailable(newDisplayValue) < 0) {
         newDisplayValue = fitInDisplay(newDisplayValue);
-    }
-    
-    if (newDisplayValue === "") {
-        newDisplayValue = 0;
     }
 
     updateDisplay(newDisplayValue);
@@ -235,7 +238,6 @@ document.addEventListener("keyup", (ev) => {
 });
 
 // TO DO:
-//  1. Fix calculator not forcing to clear all values when "TOO BIG" error message is displayed 
-//  2. Refactor and improve code
+//  1. Refactor and improve code 
 
 // Testing code
