@@ -29,6 +29,7 @@ function divide(x, y) {
 let operand1 = "";
 let operator = "";
 let operand2 = "";
+let result = "";
 
 // function for managing the operation
 function operate(operator, x, y) {
@@ -64,8 +65,7 @@ let display = document.getElementsByClassName("display")[0];
 display.textContent = displayValue;
 
 function updateDisplay(value) {
-    displayValue = value;
-    display.textContent = displayValue;
+    display.textContent = value;
 }
 
 // Add event listener to each key for providing corresponding value
@@ -89,34 +89,38 @@ function processKey(key) {
         case "7":
         case "8":
         case "9":
-            if (!operator) {
-                if (operand1 === "0" || operand1 === "ERROR") {
-                    operand1 = "";
-                }
-                if (digitsAvailable(operand1) > 0) {
-                    operand1 += key.value;
-                }
-            } else  {
-                if (digitsAvailable(operand2) > 0) {
-                    operand2 += key.value;
+            if (!result) {
+                if (!operator) {
+                    if (operand1 === "0" || operand1 === "ERROR") {
+                        operand1 = "";
+                    }
+                    if (digitsAvailable(operand1) > 0) {
+                        operand1 += key.value;
+                    }
+                } else  {
+                    if (digitsAvailable(operand2) > 0) {
+                        operand2 += key.value;
+                    }
                 }
             }
             break;
         case ".":
-            if (!operator) {
-                if (!operand1) {
-                    operand1 = "0.";
-                } else {
-                    if (!operand1.includes(".") && digitsAvailable(operand1) > 0) {
-                        operand1 += ".";
+            if (!result) {
+                if (!operator) {
+                    if (!operand1) {
+                        operand1 = "0.";
+                    } else {
+                        if (!operand1.includes(".") && digitsAvailable(operand1) > 0) {
+                            operand1 += ".";
+                        }
                     }
-                }
-            } else {
-                if (!operand2) {
-                    operand2 = "0.";
                 } else {
-                    if (!operand2.includes(".")  && digitsAvailable(operand2) > 0) {
-                        operand2 += ".";
+                    if (!operand2) {
+                        operand2 = "0.";
+                    } else {
+                        if (!operand2.includes(".")  && digitsAvailable(operand2) > 0) {
+                            operand2 += ".";
+                        }
                     }
                 }
             }
@@ -125,6 +129,10 @@ function processKey(key) {
         case "-":    
         case "*":
         case "/":
+            if (result) {
+                operand1 = result;
+                result = "";
+            }
             if (operand1) {
                 if (!operand2) {
                     if(operand1.endsWith(".")) {
@@ -140,7 +148,8 @@ function processKey(key) {
             break;
         case "=":
             if (operand2) {
-                operand1 = operate(operator, operand1, operand2);
+                result = operate(operator, operand1, operand2);
+                operand1 = "";
                 operator = "";
                 operand2 = "";
             }
@@ -149,21 +158,25 @@ function processKey(key) {
             operand1 = "0";
             operator = "";
             operand2 = "";
+            result = "";
             break;
         case "backspace":
-            if (operand1) {
-                if(operand2) {
-                    operand2 = operand2.slice(0, -1);
-                } else {
-                    if(!operator) {
-                        operand1 = operand1.slice(0, -1);
+            if (!result) {
+                if (operand1) {
+                    if(operand2) {
+                        operand2 = operand2.slice(0, -1);
+                    } else {
+                        if(!operator) {
+                            operand1 = operand1.slice(0, -1);
+                        }
                     }
                 }
             }
             break;
     }
 
-    let newDisplayValue = operand2 ? operand2 : operand1;
+    let newDisplayValue = result ? result : 
+                        operand2 ? operand2 : operand1;
 
     if (digitsAvailable(newDisplayValue) < 0) {
         newDisplayValue = fitInDisplay(newDisplayValue);
@@ -222,7 +235,6 @@ document.addEventListener("keyup", (ev) => {
 });
 
 // TO DO:
-//  1. Add result variable to fix the displayed result of an operation being subject to modification with the keypad
-//  2. Refactor and improve code
+//  1. Refactor and improve code
 
 // Testing code
