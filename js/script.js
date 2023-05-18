@@ -235,6 +235,7 @@ document.addEventListener("keyup", (ev) => {
 });
 
 // TO DO:
-//  1. Refactor and improve code
+//  1. Fix calculator not forcing to clear all values when "TOO BIG" error message is displayed 
+//  2. Refactor and improve code
 
 // Testing code
