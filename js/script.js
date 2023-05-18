@@ -55,12 +55,11 @@ function operate(operator, x, y) {
         default:
             result = "ERROR";
     }
-    
+
     return result.toString();
 }
 
 // function for populating the display
-//let displayValue = "0";
 let display = document.getElementsByClassName("display")[0];
 updateDisplay();
 
@@ -81,8 +80,8 @@ keys.forEach(element => {
 
 // function for processing the value of the pressed key
 function processKey(key) {
-    const hasError = display.textContent === "ERROR" || display.textContent === "TOO BIG" || display.textContent === "OOPS!"; // result === "ERROR" || result === "TOO BIG" || result === "OOPS!";
-
+    const hasError = display.textContent === "ERROR" || display.textContent === "TOO BIG" || display.textContent === "OOPS!";
+    
     switch (key.value) {
         case "0":
         case "1":
@@ -217,7 +216,6 @@ function fitInDisplay(value) {
 }
 
 // add keyboard support
-
 document.addEventListener("keydown", (ev) => {
     ev.preventDefault();
     try {
