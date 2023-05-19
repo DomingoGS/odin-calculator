@@ -7,7 +7,7 @@ It has been coded using HTML, CSS and JavaScript languages as an exercise for co
 
 Finding the way for the math to work properly in JavaScript turned out to be a little challenging, but I ended up using the decimals.js library to help me achieve it and I believe it has been resolved.
 
-For the moment the calculator is funcional, but in the future I would like to maybe add the following:
+For the moment, the calculator is funcional, but in the future I would like to maybe add the following:
 
 - Add buttons: <kbd>-/+</kbd>, <kbd>%</kbd>, <kbd>M+</kbd> and <kbd>MR</kbd>
 - Improve display functionality: show the selected operator and the entered operation on the display as it is typed on the keypad
@@ -16,9 +16,9 @@ For the moment the calculator is funcional, but in the future I would like to ma
 - Refactor the code to be cleaner and simpler
 
 ## Try the Calculator
-You can try the calculator yourself by going to this >LIVE DEMO<
+You can try the calculator yourself by going to this >LIVE DEMO< (link to be provided when ready)
 
 ## License
 All published assets and code in this repository are under the MIT License.
 
-Copyright (c) 2023 DomingoGS
+2023 DomingoGS
