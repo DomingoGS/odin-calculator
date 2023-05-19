@@ -1,3 +1,5 @@
+!\[my badge\](https://badgen.net/badge/hello/world/red?icon=twitter)
+
 # Calculator
 This is a simple calculator for adding, subtracting, multiplying or dividing integer or decimal values.
 
