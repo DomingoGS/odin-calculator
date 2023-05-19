@@ -1,4 +1,4 @@
-!\[my badge\](https://badgen.net/badge/hello/world/red?icon=twitter)
+![GitHub](https://img.shields.io/github/license/DomingoGS/odin-calculator) ![GitHub language count](https://img.shields.io/github/languages/count/DomingoGS/odin-calculator) ![GitHub top language](https://img.shields.io/github/languages/top/DomingoGS/odin-calculator)
 
 # Calculator
 This is a simple calculator for adding, subtracting, multiplying or dividing integer or decimal values.
